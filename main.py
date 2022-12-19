@@ -58,3 +58,4 @@ async def read_item(skip: int = 0, limit: int = 10):
 
 if __name__ == "__main__":
     uvicorn.run(app, port=int(os.getenv('APP_PORT')))
+os.getenv("PORT", default=5000)
