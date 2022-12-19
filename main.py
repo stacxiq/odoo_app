@@ -1,8 +1,10 @@
+import os
 from xmlrpc.server import SimpleXMLRPCServer
 import xmlrpc.client as client
 
 from typing import Union
 
+import uvicorn
 from fastapi import FastAPI
 
 #c174e996d56b836296720aedb0bb67081ce20cc3
@@ -53,3 +55,6 @@ async def read_item(skip: int = 0, limit: int = 10):
 async def read_item(skip: int = 0, limit: int = 10):
     sections = models.execute_kw(db, uid, password, 'product.category', 'search_read', [[['parent_id', '=', False]]], {'fields': ['name'],'offset': skip, 'limit': limit})
     return sections
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv('APP_PORT')))
