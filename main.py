@@ -29,7 +29,7 @@ async def index():
 @app.get("/brands")
 async def read_item(skip: int = 0, limit: int = 10):
     brands = models.execute_kw(db, uid, password, 'product.brand.ept', 'search_read', [[['id', '!=', 0]]],
-                               {'fields': ['name'], 'offset': skip, 'limit': limit})
+                               {'fields': ['id','name'], 'offset': skip, 'limit': limit})
     for element in brands:
         print(element)
     return brands
