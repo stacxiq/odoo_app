@@ -57,4 +57,4 @@ async def read_item(skip: int = 0, limit: int = 10):
     return sections
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv('APP_PORT')))
+    uvicorn.run(app, port=int(os.getenv('APP_PORT')))
